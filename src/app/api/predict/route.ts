@@ -54,8 +54,8 @@ export async function POST(req: Request) {
       const mlData = await getLocalMLPrediction(symptom_text);
       
       finalRisk = mlData.risk_level;
-      adviceResult = mlData.advice || mlData.recommendation;
-      finalAction = adviceResult;
+      adviceResult = mlData.advice || mlData.recommendation || null;
+      finalAction = adviceResult || "No specific recommendation available.";
       explanation = `Local ML Prediction: Detected ${mlData.disease} with ${(mlData.confidence * 100).toFixed(1)}% confidence. [Based on expanded Healthcare dataset]`;
 
     } catch (error) {
