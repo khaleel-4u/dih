@@ -12,6 +12,7 @@ interface Prediction {
   recommended_action: string;
   trigger_words: string[];
   explanation: string;
+  advice?: string; // Optonal medical advice field
 }
 
 export default function Home() {
